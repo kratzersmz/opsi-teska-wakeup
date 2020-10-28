@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# preinst script
+mkdir -p /opt/teska-wakeup
+chown root:root -R /etc/cron.d/teska-wakeup
+chmod 0644 /etc/cron.d/teska-wakeup
+systemctl restart cron
+
+opsi-admin -d method createGroup wakeup
