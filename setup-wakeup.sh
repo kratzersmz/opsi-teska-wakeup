@@ -1,3 +1,8 @@
+#!/bin/bash
+#
+# preinst script
+mkdir -p /opt/teska-wakeup
+cat <<EOF > /opt/teska-wakeup/wakeup.py
 #!/bin/python
 from __future__ import print_function
 from datetime import datetime
@@ -47,3 +52,12 @@ for wakeup in wakeups:
       wakeClient(backending,host)
       sleep(0.5)
 
+EOF
+
+
+echo "0,10,20,30,40,50 * * * 1-5 root    /usr/bin/python /opt/teska-wakeup/wakeup.py">/etc/cron.d/teska-wakeup
+chown root:root -R /etc/cron.d/teska-wakeup
+chmod 0644 /etc/cron.d/teska-wakeup
+systemctl restart cron
+
+opsi-admin -d method createGroup wakeup
