@@ -1,4 +1,5 @@
 #!/bin/python
+# some functions grabbed from http://svn.opsi.org/opsi4.1/misc/time-driven-maintenance-tools/wake_clients_for_setup.py
 from __future__ import print_function
 from datetime import datetime
 import os
@@ -33,19 +34,16 @@ def wakeGroup(backend, groupId)
     wakeClient(backend,host)
     sleep(0.5)  
 
-# get current date
 now = datetime.now()
 # currentime in format hh-mm, e.g. 07-00, 12-30
 currenttime = now.strftime("%H-%M")
 # Return the day of the week as an integer, where Monday is 1 and Sunday is 7. For example, date(2002, 12, 4).isoweekday() == 3, a Wednesday. 
 currentweekday = now.isoweekday()
-# GROUP = backend.host_getObjects(id = clientId)[0]
-# client.getDescription()
 
 wakeups = backending.group_getObjects(id="wakeup",description="on")
-isactive = True
 
-# check if wakeup is active
+# check if wakeup is active(True)
+isactive = True
 try:
   test = wakeups[0]
 except IndexError:
