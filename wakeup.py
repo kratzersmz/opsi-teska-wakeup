@@ -34,13 +34,11 @@ def wakeGroup(backend, groupId):
   except IndexError:
     raise ValueError("No Hosts in Group with id '{0}'!".format(groupId))
   for hostInGroup in hostsInGroup:
-    print(hostInGroup)
     wakeClient(backend,hostInGroup)
 
 now = datetime.now()
 # currentime in format hh-mm, e.g. 07-00, 12-30
 currenttime = now.strftime("%H-%M")
-currenttime = "22-30"
 # Return the day of the week as an integer, where Monday is 1 and Sunday is 7. For example, date(2002, 12, 4).isoweekday() == 3, a Wednesday. 
 currentweekday = now.isoweekday()
 
