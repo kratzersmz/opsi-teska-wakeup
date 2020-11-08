@@ -11,7 +11,6 @@ import sys
 import pprint
 from OPSI.Logger import Logger, LOG_WARNING
 from OPSI.Util.Ping import ping
-import json
 import time
 
 logger = Logger()
