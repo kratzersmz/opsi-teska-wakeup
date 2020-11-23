@@ -57,7 +57,7 @@ if isactive:
     # check it time fits to wakeup-name, e.g. 07-00
     if (currenttime == wakeup.id):
       # check if wakeups weekday is empty. If so, assume 1..5.
-      if len(wakeup.description) == 0 and int(currentweekday) in range(1,5):
+      if (len(wakeup.description) == 0) and (int(currentweekday) in range(1,5)):
         wakeGroup(backending,wakeup.id)
       # if currentweekday is in string wakeupdays in description for wakeup, e.g. wakeup description 1,3,6 (Monday, Wednesday, Saturday) 
       elif str(currentweekday) in wakeup.description:
